@@ -1,92 +1,263 @@
 {
     "info": {
-        "name": "Library API",
-        "_postman_id": "b6b8a4c2-1234-4f99-9b9a-000000000001",
-        "description": "Endpoints for Authors, Books, Users, Loans",
+        "_postman_id": "b1cbd8f1-1f45-4f31-bbdf-8f8a314b71a1",
+        "name": "Library API v1 (Laravel 11)",
+        "description": "Colección de endpoints REST para el sistema de gestión de biblioteca en Laravel 11.\n\nVariable:\n- `baseUrl` = http://localhost:8000/api/v1",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
         {
-            "name": "List Books",
-            "request": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                    "raw": "{{baseUrl}}/api/v1/books",
-                    "host": ["{{baseUrl}}"],
-                    "path": ["api", "v1", "books"]
-                }
-            }
-        },
-        {
-            "name": "Create Book",
-            "request": {
-                "method": "POST",
-                "header": [
-                    {
-                        "key": "Content-Type",
-                        "value": "application/json"
+            "name": "Books",
+            "item": [
+                {
+                    "name": "List all books",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/books"
                     }
-                ],
-                "body": {
-                    "mode": "raw",
-                    "raw": "{\"titulo\": \"Libro X\", \"isbn\": \"9780000000001\", \"anio_publicacion\": 2024, \"numero_paginas\": 200, \"stock_disponible\": 3}"
                 },
-                "url": {
-                    "raw": "{{baseUrl}}/api/v1/books",
-                    "host": ["{{baseUrl}}"],
-                    "path": ["api", "v1", "books"]
-                }
-            }
-        },
-        {
-            "name": "List Authors",
-            "request": {
-                "method": "GET",
-                "url": {
-                    "raw": "{{baseUrl}}/api/v1/authors",
-                    "host": ["{{baseUrl}}"],
-                    "path": ["api", "v1", "authors"]
-                }
-            }
-        },
-        {
-            "name": "Create Loan",
-            "request": {
-                "method": "POST",
-                "header": [
-                    {
-                        "key": "Content-Type",
-                        "value": "application/json"
+                {
+                    "name": "Get book by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/books/1"
                     }
-                ],
-                "body": {
-                    "mode": "raw",
-                    "raw": "{\"user_id\": 1, \"book_id\": 1, \"fecha_devolucion_estimada\": \"2025-10-21\"}"
                 },
-                "url": {
-                    "raw": "{{baseUrl}}/api/v1/loans",
-                    "host": ["{{baseUrl}}"],
-                    "path": ["api", "v1", "loans"]
+                {
+                    "name": "Create book",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"titulo\": \"El Principito\",\n  \"isbn\": \"9781234567890\",\n  \"anio_publicacion\": 1943,\n  \"numero_paginas\": 96,\n  \"descripcion\": \"Un clásico de la literatura.\",\n  \"stock_disponible\": 5,\n  \"authors\": [1, 2]\n}"
+                        },
+                        "url": "{{baseUrl}}/books"
+                    }
+                },
+                {
+                    "name": "Update book",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"titulo\": \"El Principito (Edición Revisada)\",\n  \"stock_disponible\": 10\n}"
+                        },
+                        "url": "{{baseUrl}}/books/1"
+                    }
+                },
+                {
+                    "name": "Delete book",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/books/1"
+                    }
+                },
+                {
+                    "name": "Attach authors to book",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"authors\": [1, 3]\n}"
+                        },
+                        "url": "{{baseUrl}}/books/1/attach-authors"
+                    }
                 }
-            }
+            ]
         },
         {
-            "name": "Return Loan",
-            "request": {
-                "method": "POST",
-                "url": {
-                    "raw": "{{baseUrl}}/api/v1/loans/1/return",
-                    "host": ["{{baseUrl}}"],
-                    "path": ["api", "v1", "loans", "1", "return"]
+            "name": "Authors",
+            "item": [
+                {
+                    "name": "List authors",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/authors"
+                    }
+                },
+                {
+                    "name": "Get author by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/authors/1"
+                    }
+                },
+                {
+                    "name": "Create author",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"nombre\": \"Gabriel\",\n  \"apellido\": \"García Márquez\",\n  \"fecha_nacimiento\": \"1927-03-06\",\n  \"nacionalidad\": \"Colombiana\",\n  \"biografia\": \"Autor de Cien años de soledad\"\n}"
+                        },
+                        "url": "{{baseUrl}}/authors"
+                    }
+                },
+                {
+                    "name": "Update author",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"nacionalidad\": \"Colombiano\",\n  \"biografia\": \"Ganador del Nobel de Literatura 1982\"\n}"
+                        },
+                        "url": "{{baseUrl}}/authors/1"
+                    }
+                },
+                {
+                    "name": "Delete author",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/authors/1"
+                    }
                 }
-            }
+            ]
+        },
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "List users",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/users"
+                    }
+                },
+                {
+                    "name": "Create user",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Carlos Pérez\",\n  \"email\": \"carlos@example.com\",\n  \"telefono\": \"3124567890\",\n  \"estado\": \"activo\",\n  \"password\": \"123456\"\n}"
+                        },
+                        "url": "{{baseUrl}}/users"
+                    }
+                },
+                {
+                    "name": "Get user by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/users/1"
+                    }
+                },
+                {
+                    "name": "Update user",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"telefono\": \"3209998877\",\n  \"estado\": \"inactivo\"\n}"
+                        },
+                        "url": "{{baseUrl}}/users/1"
+                    }
+                },
+                {
+                    "name": "Delete user",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/users/1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Loans",
+            "item": [
+                {
+                    "name": "List loans",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/loans"
+                    }
+                },
+                {
+                    "name": "Get loan by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{baseUrl}}/loans/1"
+                    }
+                },
+                {
+                    "name": "Create loan",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 1,\n  \"book_id\": 1,\n  \"fecha_devolucion_estimada\": \"2025-10-20\"\n}"
+                        },
+                        "url": "{{baseUrl}}/loans"
+                    }
+                },
+                {
+                    "name": "Return loan",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{baseUrl}}/loans/1/return"
+                    }
+                },
+                {
+                    "name": "Delete loan",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{baseUrl}}/loans/1"
+                    }
+                }
+            ]
         }
     ],
     "variable": [
         {
             "key": "baseUrl",
-            "value": "http://localhost:8000"
+            "value": "http://localhost:8000/api/v1"
         }
     ]
 }
