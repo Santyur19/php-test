@@ -1,0 +1,92 @@
+{
+    "info": {
+        "name": "Library API",
+        "_postman_id": "b6b8a4c2-1234-4f99-9b9a-000000000001",
+        "description": "Endpoints for Authors, Books, Users, Loans",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "List Books",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/v1/books",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "v1", "books"]
+                }
+            }
+        },
+        {
+            "name": "Create Book",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"titulo\": \"Libro X\", \"isbn\": \"9780000000001\", \"anio_publicacion\": 2024, \"numero_paginas\": 200, \"stock_disponible\": 3}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/v1/books",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "v1", "books"]
+                }
+            }
+        },
+        {
+            "name": "List Authors",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{baseUrl}}/api/v1/authors",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "v1", "authors"]
+                }
+            }
+        },
+        {
+            "name": "Create Loan",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"user_id\": 1, \"book_id\": 1, \"fecha_devolucion_estimada\": \"2025-10-21\"}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/v1/loans",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "v1", "loans"]
+                }
+            }
+        },
+        {
+            "name": "Return Loan",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{baseUrl}}/api/v1/loans/1/return",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "v1", "loans", "1", "return"]
+                }
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8000"
+        }
+    ]
+}
