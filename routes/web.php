@@ -1,17 +1,9 @@
 <?php
 
-use App\Http\Controllers\books\BookRoutes;
-use App\Http\Controllers\users\UserRoutes;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::redirect('/', '/books');
 
-
-Route::prefix("users")->group(function () {
-    UserRoutes::routes();
-});
-
-Route::prefix("books")->group(function () {
-    BookRoutes::routes();
-});
-
+Route::view('/books', 'books.index');
+Route::view('/loans/new', 'loans.new');
+Route::view('/dashboard', 'dashboard');

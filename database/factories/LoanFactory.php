@@ -13,10 +13,10 @@ class LoanFactory extends Factory
         return [
             'user_id' => User::factory(),
             'book_id' => Book::factory(),
-            'fecha_prestamo' => now(),
-            'fecha_devolucion_estimada' => now()->addDays(14)->toDateString(),
-            'fecha_devolucion_real' => null,
-            'estado' => 'prestado',
+            'loan_date' => now(),
+            'stimated_delivery_date' => now()->addDays(14)->toDateString(),
+            'delivery_date' => null,
+            'status' => 'prestado',
         ];
     }
 }

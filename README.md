@@ -1,10 +1,10 @@
-# 📚 Sistema de Gestión de Biblioteca – Laravel 11 (API + Web)
+# Sistema de Gestión de Biblioteca
 
-Este proyecto implementa un **sistema completo de gestión de biblioteca** con API REST y una interfaz web en **Blade + TailwindCSS**, construido sobre **Laravel 11** y **PostgreSQL**.
+Este proyecto implementa un sistema de gestión de biblioteca con API REST y una interfaz web en **Blade + TailwindCSS**
 
 Incluye:
 
--   CRUD de **Libros**, **Autores**, **Usuarios** y **Préstamos**
+-   CRUD de _Libros_, _Autores_, _Usuarios_ y _Préstamos_
 -   **Relaciones Eloquent** (muchos a muchos y uno a muchos)
 -   **Validaciones FormRequest**
 -   **Seeders y Factories** para datos de ejemplo
@@ -13,7 +13,7 @@ Incluye:
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 | Componente    | Versión / Herramienta      |
 | ------------- | -------------------------- |
@@ -27,10 +27,24 @@ Incluye:
 
 ---
 
-## 🚀 Instalación rápida
-
 ### 1️⃣ Crear nuevo proyecto Laravel
 
 ```bash
 composer create-project laravel/laravel biblioteca
 ```
+
+## Web (Blade)
+
+Rutas disponibles:
+
+-   `/books`: lista y búsqueda en tiempo real
+-   `/loans/new`: formulario para crear préstamo
+-   `/dashboard`: métricas simples
+
+## Postman
+
+Se incluye `postman_collection.json` con los campos alineados a los modelos/controladores.
+
+## Seeders
+
+Ajustados para 10 autores, 20 libros, 15 usuarios y 10 préstamos. Los factories ahora usan los nombres de columnas reales.

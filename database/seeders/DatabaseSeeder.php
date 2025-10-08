@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             $book->authors()->sync($authors);
         });
 
-        Loan::factory(5)->create();
+        Loan::factory(10)->create();
     }
 }
+
+        User::factory()->count(14)->create();

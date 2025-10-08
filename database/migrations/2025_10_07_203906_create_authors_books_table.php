@@ -11,8 +11,12 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('authors_books', function (Blueprint $table) {
-            $table->foreignId('author_id')->references("id")->on("authors");
-            $table->foreignId('book_id')->references("id")->on("books");
+            $table->foreignId('author_id');
+            $table->foreignId('book_id');
+            $table->timestamps();
+            $table->primary(['author_id','book_id']);
+            $table->foreign('author_id','authors_books_author_fk')->references('id')->on('authors')->onDelete('cascade');
+            $table->foreign('book_id','authors_books_book_fk')->references('id')->on('books')->onDelete('cascade');
         });
     }
 

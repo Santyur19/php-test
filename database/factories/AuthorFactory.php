@@ -9,11 +9,11 @@ class AuthorFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => fake()->firstName(),
-            'apellido' => fake()->lastName(),
-            'fecha_nacimiento' => fake()->date(),
-            'nacionalidad' => fake()->country(),
-            'biografia' => fake()->paragraph(),
+            'firstName' => fake()->firstName(),
+            'lastName' => fake()->lastName(),
+            'birth' => fake()->date(),
+            'nationality_id' => null,
+            'biography' => fake()->paragraph(),
         ];
     }
 }

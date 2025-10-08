@@ -1,7 +1,7 @@
 {
     "info": {
         "_postman_id": "b1cbd8f1-1f45-4f31-bbdf-8f8a314b71a1",
-        "name": "Library API v1 (Laravel 11)",
+        "name": "Library API v1 (fixed)",
         "description": "Colección de endpoints REST para el sistema de gestión de biblioteca en Laravel 11.\n\nVariable:\n- `baseUrl` = http://localhost:8000/api/v1",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
@@ -35,7 +35,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"titulo\": \"El Principito\",\n  \"isbn\": \"9781234567890\",\n  \"anio_publicacion\": 1943,\n  \"numero_paginas\": 96,\n  \"descripcion\": \"Un clásico de la literatura.\",\n  \"stock_disponible\": 5,\n  \"authors\": [1, 2]\n}"
+                            "raw": "{\n  \"title\": \"El Principito\",\n  \"isbn\": \"9781234567890\",\n  \"published\": 1943,\n  \"pages\": 96,\n  \"description\": \"Un clásico de la literatura.\",\n  \"stock\": 5,\n  \"authors\": [1, 2]\n}"
                         },
                         "url": "{{baseUrl}}/books"
                     }
@@ -52,7 +52,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"titulo\": \"El Principito (Edición Revisada)\",\n  \"stock_disponible\": 10\n}"
+                            "raw": "{\n  \"title\": \"El Principito (Edición Revisada)\",\n  \"stock\": 10\n}"
                         },
                         "url": "{{baseUrl}}/books/1"
                     }
@@ -112,7 +112,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"nombre\": \"Gabriel\",\n  \"apellido\": \"García Márquez\",\n  \"fecha_nacimiento\": \"1927-03-06\",\n  \"nacionalidad\": \"Colombiana\",\n  \"biografia\": \"Autor de Cien años de soledad\"\n}"
+                            "raw": "{\n  \"firstName\": \"Gabriel\",\n  \"lastName\": \"García Márquez\",\n  \"fecha_nacimiento\": \"1927-03-06\",\n  \"nationality_id\": \"Colombiana\",\n  \"biography\": \"Autor de Cien años de soledad\"\n}"
                         },
                         "url": "{{baseUrl}}/authors"
                     }
@@ -129,7 +129,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"nacionalidad\": \"Colombiano\",\n  \"biografia\": \"Ganador del Nobel de Literatura 1982\"\n}"
+                            "raw": "{\n  \"nationality_id\": \"Colombiano\",\n  \"biography\": \"Ganador del Nobel de Literatura 1982\"\n}"
                         },
                         "url": "{{baseUrl}}/authors/1"
                     }
@@ -165,7 +165,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"name\": \"Carlos Pérez\",\n  \"email\": \"carlos@example.com\",\n  \"telefono\": \"3124567890\",\n  \"estado\": \"activo\",\n  \"password\": \"123456\"\n}"
+                            "raw": "{\n  \"name\": \"Carlos Pérez\",\n  \"email\": \"carlos@example.com\",\n  \"telefono\": \"3124567890\",\n  \"status\": \"activo\",\n  \"password\": \"123456\"\n}"
                         },
                         "url": "{{baseUrl}}/users"
                     }
@@ -189,7 +189,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"telefono\": \"3209998877\",\n  \"estado\": \"inactivo\"\n}"
+                            "raw": "{\n  \"telefono\": \"3209998877\",\n  \"status\": \"inactivo\"\n}"
                         },
                         "url": "{{baseUrl}}/users/1"
                     }
@@ -232,7 +232,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n  \"user_id\": 1,\n  \"book_id\": 1,\n  \"fecha_devolucion_estimada\": \"2025-10-20\"\n}"
+                            "raw": "{\n  \"user_id\": 1,\n  \"book_id\": 1,\n  \"stimated_delivery_date\": \"2025-10-20\"\n}"
                         },
                         "url": "{{baseUrl}}/loans"
                     }
